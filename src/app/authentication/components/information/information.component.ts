@@ -11,7 +11,7 @@ import { isNgTemplate } from '@angular/compiler';
   providers: [WebsocketService, ChatService]
 })
 export class InformationComponent implements OnInit {
-  information: any[] = [];
+  information: any = [];
 
   constructor(
     private chatService: ChatService,

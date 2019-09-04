@@ -1,2 +1,123 @@
 <app-auth-content>
+        <section class="content-header">
+        <div class="row">
+                <div class="col-md-12">
+                  <!-- Custom Tabs -->
+                  <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a href="#tab_1" data-toggle="tab">Customers Information</a></li>
+                      <li><a href="#tab_2" data-toggle="tab">Purchase</a></li>
+                      <li><a href="#tab_3" data-toggle="tab">Call History</a></li>
+                      
+                      
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="tab_1" *ngIf="information">
+                            <div align="center"><img *ngIf="information.Photo" class="img-circle" width="130px" height="130px"></div>
+                         
+                         
+                          <div *ngIf="information">
+               
+                 <!-- <hr /> -->
+                 <dl class="dl-horizontal">
+                     <dt> Name </dt> <dd>{{ information.Name }}</dd>
+                     <br/>
+                     <dt>Phone</dt><dd>{{ information.Phone }}</dd>
+                     <br/>
+                     <dt>Address</dt><dd>{{ information.Address }}</dd>
+                     <br/>
+                     <dt>Occupation</dt><dd>{{ information.Occupation }}</dd>
+                     <br/>
+                     <dt>Email</dt><dd>{{ information.Email }}</dd>
+                     <br/>
+                     <dt>Facebook</dt><dd>{{ information.Facebook }}</dd>
+                     <br/>
+                     <dt>Line</dt><dd>{{ information.Line }}</dd>
+                 </dl>
+             </div>
+                          
+                         
+                      </div>
+                      <!-- /.tab-pane -->
+                      <div class="tab-pane" id="tab_2">
+                             <div class="box box-body box-primary">
+                                     <table class="table table-striped" id="dtaTable">
+                                         <thead class="dataTableHead">
+                                             <tr>
+                                                 <th>
+                                                     Order Id
+                                                 </th>
+                                                 <th>
+                                                     Order Date
+                                                 </th>
+                                                 <th>
+                                                     Amount
+                                                 </th>
+                                                                                  
+                                                 <th>Action</th>
+                                             </tr>
+                                         </thead>
+                                         <tr >
+                                                 
+                                                 <td >
+                                                       sd 
+                                                     </td>
+                                                     <td>
+                                                        sd    
+                                                     </td>
+                                                     
+                                                     <td>
+                                                        sd    
+                                                     </td>
+                                                    
+                                                     <td > </td>
+                                             </tr>
+                                         </table>
+                                         
+                                     </div>
+             
+                                   
+             
+                                 
+                                     
+                                     
+                      </div>
+                      <!-- /.tab-pane -->
+                      <div class="tab-pane" id="tab_3">
+                             <div class="box box-body box-primary">
+                                     <table class="table table-striped" id="dtaTable">
+                                         <thead class="dataTableHead">
+                                             <tr>
+                                                 <th>
+                                                     Call From
+                                                 </th>
+                                                 <th>
+                                                     Call In
+                                                 </th>
+                                                 <th>
+                                                     Date
+                                                 </th>
+                                                 <th>
+                                                     Time
+                                                 </th>
+                                                 <th>
+                                                     Ducation
+                                                 </th>                                  
+                                             </tr>
+                                         </thead>
+                                         </table>
+                                     </div>
+                      </div>
+                      <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                  </div>
+                  <!-- nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+             
+             
+              </div>
+              <!-- /.row -->
+            </section>
     </app-auth-content>
