@@ -1,0 +1,82 @@
+<section class="material-half-bg">
+    <div class="cover"></div>
+</section>
+<section class="login-content">
+    <div class="logo">
+        <h1>MembeR</h1>
+    </div>
+    <div class="login-box">
+
+
+        <!-- <form>
+                <h3 class="login-head">
+                        <i class="fa fa-lg fa-fw fa-user"></i>
+                        เข้าสู่ระบบ
+                    </h3>
+            <div class="form-group ">
+                <label class="control-label">อีเมล์</label>
+                <input type="text" name="Username" [(ngModel)]="model.Username" class="form-control"
+                    placeholder="Email" value="ipbilling@kratos.co.th" required>
+                
+            </div>
+            <div class="form-group">
+                <label class="control-label">รหัสผ่าน</label>
+                <input type="password" name="Passward" [(ngModel)]="model.Password" class="form-control"
+                    placeholder="Password" value="1q2w@ipbilling">
+               
+            </div>
+
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label style="margin-left: 8px;">
+                            <input type="checkbox"> Remember Me
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xs-4">
+                    <button type="submit" (click)="clickLogin()" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                </div>
+
+            </div>
+        </form> -->
+
+        <!-- using fromGroup -->
+            <form class="login-form" >
+                <h3 class="login-head">
+                    <i class="fa fa-lg fa-fw fa-user"></i>
+                    เข้าสู่ระบบ
+                </h3>
+                <div class="form-group">
+                    <label class="control-label">อีเมล์</label>
+                    <input class="form-control" name="Username" [(ngModel)]="model.Username"  type="text" placeholder="กรุณากรอกข้อมูล">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">รหัสผ่าน</label>
+                    <input class="form-control" name="Passward" [(ngModel)]="model.Password" type="password" placeholder="กรุณากรอกข้อมูล">
+                </div>
+                <div class="form-group">
+                    <div class="utility">
+                        <div class="animated-checkbox">
+                            <label>
+                                <input formControlName="remember" type="checkbox">
+                                <span class="label-text">จำฉันไว้ในระบบ</span>
+                            </label>
+                        </div>
+                        <!-- <p class="semibold-text mb-2">
+                            <a href="#" data-toggle="flip">ลืมรหัสผ่าน ?</a>
+                        </p> -->
+                    </div>
+                </div>
+                <div class="form-group btn-container">
+                    <button button type="submit" (click)="clickLogin()" class="btn btn-primary btn-block">
+                        <i class="fa fa-sign-in fa-lg fa-fw"></i>
+                        เข้าสู่ระบบ
+                    </button>
+    
+                    
+                </div>
+            </form>
+    </div>
+</section>

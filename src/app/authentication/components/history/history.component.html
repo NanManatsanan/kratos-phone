@@ -1,0 +1,87 @@
+<!-- <app-auth-navbar></app-auth-navbar>
+<app-auth-sidebar></app-auth-sidebar> -->
+<app-auth-content>
+    <!-- <div class="app-title">
+        <div>
+            <h1>
+                <i class="fa fa-users"></i> รายการสมาชิก</h1>
+            <p>หน้าแสดงรายการ สมาชิก ค้นหา และแก้ไข</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item">
+                <i class="fa fa-home fa-lg"></i>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">รายการสมาชิก</a>
+            </li>
+        </ul>
+    </div> -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <!-- ส่วนหัว -->
+                <div class="tile-title-w-btn">
+                    <h3 class="title">
+                        <i class="fa fa-phone"></i> History
+                    </h3>
+                    <!-- ค้นหา -->
+                    <div class="form-group">
+                        <div class="input-group">
+                           
+
+                            <input type="text" class="form-control" placeholder="ค้นหาข้อมูล">
+
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Ducation</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of history">
+                                    <td><img *ngIf="item.Photo"   width="50px" height="50px"></td>
+                                    <td>{{ item.Name }}</td>
+                                    <td>{{ item.From }}</td>
+                                    <td>{{ item.Date }}</td>
+                                    <td>{{ item.Time }}</td>
+                                    <td>{{item.Duration}}</td>
+                                    <td class="text-right">
+                                        <i (click)="onInfor(item)" class="fa fa-info-circle"></i>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="7">
+                                        จำนวนสมาชิกทั้งหมด 0 คน
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <pagination previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-auth-content>
+
+
