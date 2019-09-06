@@ -17,7 +17,12 @@ const RouteLists: Routes = [
              {path:':From',component:InformationComponent}
          ]
     },
-    { path: AuthURL.Orderitem, component: OrderitemComponent}
+    { path: AuthURL.Orderitem,
+        children:[
+            {path: '', component:OrderitemComponent},
+            {path:':OrderId',component:OrderitemComponent}
+        ]
+    }
 ];
 
 export const AuthenticationRouting = RouterModule.forChild(RouteLists);

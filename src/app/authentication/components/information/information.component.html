@@ -1,4 +1,7 @@
-<app-auth-content>
+<app-auth-content> 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
         <section class="content-header">
         <div class="row">
                 <div class="col-md-12">
@@ -57,20 +60,20 @@
                                                  <th>Action</th>
                                              </tr>
                                          </thead>
-                                         <tr >
+                                         <tr *ngFor="let item of purchase">
                                                  
                                                  <td >
-                                                       sd 
+                                                       {{ item.OrderId }}
                                                      </td>
                                                      <td>
-                                                        sd    
+                                                        {{ item.OrderDate }}    
                                                      </td>
                                                      
                                                      <td>
-                                                        sd    
+                                                        {{ item.Amount }}    
                                                      </td>
                                                     
-                                                     <td > </td>
+                                                     <td >  <i (click)="onOrder(item)" class="fa fa-info-circle"></i> </td>
                                              </tr>
                                          </table>
                                          
@@ -104,6 +107,26 @@
                                                      Ducation
                                                  </th>                                  
                                              </tr>
+                                             <tr *ngFor="let item of callhis">
+                                                 
+                                                <td >
+                                                      {{ item.From }}
+                                                    </td>
+                                                    <td>
+                                                       {{ item.Call }}    
+                                                    </td>
+                                                    
+                                                    <td>
+                                                       {{ item.Date }}    
+                                                    </td>
+                                                   
+                                                    <td > 
+                                                            {{ item.Time }}
+                                                    </td>
+                                                    <td>
+                                                            {{ item.Duration }}    
+                                                         </td>
+                                            </tr>
                                          </thead>
                                          </table>
                                      </div>
@@ -120,4 +143,7 @@
               </div>
               <!-- /.row -->
             </section>
+        </div>
+    </div>
+</div>
     </app-auth-content>
