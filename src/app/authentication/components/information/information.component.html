@@ -8,35 +8,46 @@
                   <!-- Custom Tabs -->
                   <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                      <li class="active"><a href="#tab_1" data-toggle="tab">Customers Information</a></li>
-                      <li><a href="#tab_2" data-toggle="tab">Purchase</a></li>
-                      <li><a href="#tab_3" data-toggle="tab">Call History</a></li>
+                      <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Customers Information</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Purchase</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Call History</a></li>
                       
                       
                     </ul>
                     <div class="tab-content">
-                      <div class="tab-pane active" id="tab_1" *ngIf="information">
-                            <div align="center"><img *ngIf="information.Photo" class="img-circle" width="130px" height="130px"></div>
+                      <div class="tab-pane active" id="tab_1" >
+                            <div align="center" *ngIf="information"><img img [src]="information.Photo"  class="img-circle" width="130px" height="130px"></div>
                          
                          
                           <div *ngIf="information">
                
                  <!-- <hr /> -->
-                 <dl class="dl-horizontal">
-                     <dt> Name </dt> <dd>{{ information.Name }}</dd>
+                 <!-- <dl class="dl-horizontal"> -->
+                        <br/>
+                     <table align="center">
+                            <tr><th width=50%>Name</th><td>{{ information.Name }}</td></tr><br/>
+                            <tr><th width=50%>Phone</th><td>{{ information.Phone }}</td></tr> <br/>
+                            <tr><th width=50%>Address</th><td>{{ information.Address }}</td></tr> <br/>
+                            <tr><th width=50%>Occupation</th><td>{{ information.Occupation }}</td></tr> <br/>
+                            <tr><th width=50%>Email</th><td>{{ information.Email }}</td></tr> <br/>
+                            <tr><th width=50%>Facebook</th><td>{{ information.Facebook }}</td></tr> <br/>
+                            <tr><th width=50%>Line</th><td>{{ information.Line }}</td></tr>  
+                     </table>
+                       
+                     <!-- <dt> Name </dt> <dd>{{ information.Name }}</dd>
                      <br/>
-                     <dt>Phone</dt><dd>{{ information.Phone }}</dd>
+                     <dt>Phone</dt> <dd>{{ information.Phone }}</dd>
                      <br/>
-                     <dt>Address</dt><dd>{{ information.Address }}</dd>
+                     <dt>Address</dt> <dd>{{ information.Address }}</dd>
                      <br/>
-                     <dt>Occupation</dt><dd>{{ information.Occupation }}</dd>
+                     <dt>Occupation</dt> <dd>{{ information.Occupation }}</dd>
                      <br/>
-                     <dt>Email</dt><dd>{{ information.Email }}</dd>
+                     <dt>Email</dt> <dd>{{ information.Email }}</dd>
                      <br/>
-                     <dt>Facebook</dt><dd>{{ information.Facebook }}</dd>
+                     <dt>Facebook</dt> <dd>{{ information.Facebook }}</dd>
                      <br/>
-                     <dt>Line</dt><dd>{{ information.Line }}</dd>
-                 </dl>
+                     <dt>Line</dt> <dd>{{ information.Line }}</dd>
+                 </dl> -->
              </div>
                           
                          

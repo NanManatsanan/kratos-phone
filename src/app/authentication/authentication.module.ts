@@ -7,7 +7,7 @@ import { AllhistoryComponent } from './components/allhistory/allhistory.componen
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { InformationComponent } from './components/information/information.component';
 import { OrderitemComponent } from './components/orderitem/orderitem.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -16,7 +16,7 @@ import { OrderitemComponent } from './components/orderitem/orderitem.component';
   imports: [
     CommonModule,
     AuthenticationRouting,
-    SharedsModule,HttpClientModule
+    SharedsModule,HttpClientModule,Ng2SearchPipeModule
   ]
 })
 export class AuthenticationModule { }

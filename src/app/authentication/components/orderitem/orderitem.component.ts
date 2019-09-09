@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/shareds/services/websocket.service';
 import { ChatService } from 'src/app/shareds/services/chat.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AppURL } from 'src/app/app.url';
+import { AuthURL } from '../../authentication.url';
 
 @Component({
   selector: 'app-orderitem',
@@ -11,9 +14,9 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class OrderitemComponent implements OnInit {
-
+  searchText;
   orderitem: any = [];
-  constructor(private chatService: ChatService,private http: HttpClient) { 
+  constructor(private chatService: ChatService,private http: HttpClient, private router: Router) { 
     
       chatService.messages.subscribe(msg => {
         console.log("Response From Websocket Server:" + msg);
@@ -29,6 +32,15 @@ export class OrderitemComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  OnBack(item: any) {
+    this.router.navigate(['',
+      AppURL.Authen,
+      AuthURL.Information,
+      localStorage.getItem('PhoneClick')
+    ]);
+    
   }
 
 }

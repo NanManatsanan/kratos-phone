@@ -13,7 +13,7 @@ import { AppURL } from 'src/app/app.url';
   providers: [WebsocketService, ChatService]
 })
 export class AllhistoryComponent implements OnInit {
-
+  searchText;
   allhistory: any[] = [];
   constructor(private http: HttpClient,private chatService: ChatService, private router: Router) {
     http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/1/10').subscribe(result => {

@@ -18,9 +18,10 @@ import { AuthURL } from '../../authentication.url';
 })
 export class HistoryComponent implements OnInit {
   history: any[] = [];
+  searchText;
   constructor(private http: HttpClient, private chatService: ChatService, private router: Router, ) {
 
-
+    
     http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_top10/' + localStorage.getItem('extension')).subscribe(result => {
       this.history = result.data_page;
       console.log(JSON.stringify(this.history));

@@ -22,6 +22,7 @@ export class AuthNavbarComponent implements OnInit {
 
   onLogout(){
     this.alert.notify('ออกจากระบบสำเร็จ','info')
+    localStorage.clear();
     //this.authen.clearAuthenticated();
     this.router.navigate(['/', AppURL.Login ]);
 

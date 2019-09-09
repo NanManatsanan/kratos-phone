@@ -29,13 +29,13 @@
                         <div class="input-group">
                            
 
-                            <input type="text" class="form-control" placeholder="ค้นหาข้อมูล">
+                            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="ค้นหาข้อมูล">
 
-                            <div class="input-group-append">
+                            <!-- <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fa fa-search"></i>
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of history">
-                                    <td><img *ngIf="item.Photo"   width="50px" height="50px"></td>
+                                <tr *ngFor="let item of history | filter:searchText">
+                                    <td><img [src]="item.Photo"   width="50px" height="50px"></td>
                                     <td>{{ item.Name }}</td>
                                     <td>{{ item.From }}</td>
                                     <td>{{ item.Date }}</td>
@@ -67,13 +67,13 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <tfoot>
+                            <!-- <tfoot>
                                 <tr>
                                     <th colspan="7">
                                         จำนวนสมาชิกทั้งหมด 0 คน
                                     </th>
                                 </tr>
-                            </tfoot>
+                            </tfoot> -->
                         </table>
 
                         <pagination previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination>
