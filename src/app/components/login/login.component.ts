@@ -38,6 +38,7 @@ export class LoginComponent implements ILoginComponent {
             .subscribe(dataall => {
               console.warn(dataall);
               localStorage.setItem('extension', dataall.Extension);
+              localStorage.setItem('photo', dataall.Photo);
               localStorage.setItem('ServerURL', dataall.websocket_cfg.Server);
               localStorage.setItem('ServerPort', dataall.websocket_cfg.ServerPort);
               // localStorage.setItem('currentUser', JSON.stringify(dataall));

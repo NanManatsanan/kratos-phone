@@ -5,6 +5,7 @@ import { ChatService } from 'src/app/shareds/services/chat.service';
 import { Router } from '@angular/router';
 import { AuthURL } from '../../authentication.url';
 import { AppURL } from 'src/app/app.url';
+import { PageChangedEvent } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-allhistory',
@@ -15,7 +16,9 @@ import { AppURL } from 'src/app/app.url';
 export class AllhistoryComponent implements OnInit {
   searchText;
   allhistory: any[] = [];
+ 
   constructor(private http: HttpClient,private chatService: ChatService, private router: Router) {
+    
     http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/1/10').subscribe(result => {
       this.allhistory = result.data_page;
       console.log(JSON.stringify(this.allhistory));
@@ -45,5 +48,16 @@ export class AllhistoryComponent implements OnInit {
   clearPhoneAfterSelect() {
     localStorage.removeItem('PhoneClick');
   }
+  
+  // startPage:number =1;
+
+  onPageChanged(page: PageChangedEvent){
+    console.log(page.page);
+    this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/'+page.page+'/10').subscribe(result => {
+      this.allhistory = result.data_page;
+      console.log(JSON.stringify(this.allhistory));
+    });
+   }
+  
 
 }

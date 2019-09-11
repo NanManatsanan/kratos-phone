@@ -1,16 +1,16 @@
 <!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar" >
-    <div *ngIf="UserLogin" class="app-sidebar__user">
-            <!-- <img *ngIf="UserLogin.image" class="app-sidebar__user-avatar" [src]="UserLogin.image" alt="User Image"> -->
-            <img *ngIf="!UserLogin.image" class="app-sidebar__user-avatar" src="assets/images/no-image-profile.png" alt="User Image">
+    <div  *ngIf="Logintest" class="app-sidebar__user">
+            <img *ngIf="Logintest.photo" class="app-sidebar__user-avatar" [src]="Logintest.photo" alt="User Image">
+            <img *ngIf="Logintest.photo" class="app-sidebar__user-avatar" src="assets/images/no-image-profile.png" alt="User Image">
         <div>
             <p class="app-sidebar__user-name">
-                    <!-- {{ UserLogin.firstname }} {{ UserLogin.lastname }} -->
+                {{ Logintest.email }}
             </p>
-            <p class="app-sidebar__user-designation">
-                    <!-- {{ UserLogin.position }} -->
-            </p>
+            <!-- <p class="app-sidebar__user-designation">
+                    {{ Logintest.position }}
+            </p> -->
         </div>
     </div>
     <ul class="app-menu">

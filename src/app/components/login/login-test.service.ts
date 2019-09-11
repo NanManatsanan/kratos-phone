@@ -55,5 +55,6 @@ export interface IAccount {
   email: string;
   password: string;
   phone?:string;
+  photo?:string;
   extension?: string;
 }

@@ -1,7 +1,10 @@
-import { IAccount } from '../../services/account.service';
+//import { IAccount } from 'src/app/components/login/login-test.service';
+import { IAccount } from 'src/app/components/login/login-test.service';
 
 export interface IAuthSidebarComponent {
     AppURL: any;
     AuthURL: any;
-    UserLogin: IAccount;
+    Logintest: IAccount;
+  
+   // Logintest: IAccount;
 }

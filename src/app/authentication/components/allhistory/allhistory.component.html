@@ -76,7 +76,7 @@
                             </tfoot> -->
                         </table>
 
-                        <pagination previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination>
+                        <pagination  (pageChanged)="onPageChanged($event)" previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination>
                     </div>
                 </div>
             </div>
