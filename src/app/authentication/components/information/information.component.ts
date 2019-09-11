@@ -17,6 +17,7 @@ export class InformationComponent implements OnInit {
   information: any = [];
   purchase: any = [];
   callhis: any = [];
+  searchText;
 
   constructor(
     private chatService: ChatService,

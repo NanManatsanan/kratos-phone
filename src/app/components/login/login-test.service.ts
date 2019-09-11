@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class LoginTestService {
   UrlCheckIPphone: string;
   token: string;
   header: any;
+  model: any;
+  
   constructor(
     private http: HttpClient
     ) {

@@ -13,25 +13,35 @@ import { PageChangedEvent } from 'ngx-bootstrap';
   styleUrls: ['./allhistory.component.css'],
   providers: [WebsocketService, ChatService]
 })
+
 export class AllhistoryComponent implements OnInit {
+  // items = [];
+  // pageOfItems: Array<any>;
+
   searchText;
   allhistory: any[] = [];
- 
-  constructor(private http: HttpClient,private chatService: ChatService, private router: Router) {
-    
-    http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/1/10').subscribe(result => {
+  
+  page: PageChangedEvent
+  constructor(private http: HttpClient, private chatService: ChatService, private router: Router) {
+
+    http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/1/10').subscribe(result => {
       this.allhistory = result.data_page;
       console.log(JSON.stringify(this.allhistory));
     });
+
+    // http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/'+page.page+'/'+page.itemsPerPage+'?search='+searchText).subscribe(result => {
+    //   this.allhistory = result.data_page;
+    //   console.log(JSON.stringify(this.allhistory));
+    // });
 
     chatService.messages.subscribe(msg => {
       console.log("Response From Websocket Server:" + msg);
       console.log(msg);
       //alert(msg);
     })
-   }
+  }
 
-   onInfor(item: any) {
+  onInfor(item: any) {
     this.router.navigate(['',
       AppURL.Authen,
       AuthURL.Information,
@@ -43,21 +53,40 @@ export class AllhistoryComponent implements OnInit {
 
   ngOnInit() {
     this.clearPhoneAfterSelect();
+   
   }
+
+  
 
   clearPhoneAfterSelect() {
     localStorage.removeItem('PhoneClick');
   }
-  
+
   // startPage:number =1;
 
-  onPageChanged(page: PageChangedEvent){
+  onPageChanged(page: any) {
+    console.error(this.searchText);
     console.log(page.page);
-    this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/'+page.page+'/10').subscribe(result => {
+    console.log(page.itemsPerPage);
+    localStorage.setItem('page', page.page);
+      localStorage.setItem('per', page.itemsPerPage);
+   this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
       this.allhistory = result.data_page;
       console.log(JSON.stringify(this.allhistory));
+      
     });
-   }
-  
+ 
+  }
+
+  CustomSearchAPI() {
+    console.warn(this.searchText);
+    
+    this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per') + '?search=' + this.searchText).subscribe(result => {
+      this.allhistory = result.data_page;
+     
+      console.log(JSON.stringify(this.allhistory));
+    });
+  }
+
 
 }

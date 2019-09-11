@@ -16,13 +16,9 @@
                                 <div class="input-group">
                                    
                                        
-                                    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="ค้นหาข้อมูล">
+                                    <!-- <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="ค้นหาข้อมูล"> -->
         
-                                    <!-- <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div> -->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -40,7 +36,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let item of orderitem | filter:searchText">
+                                        <tr *ngFor="let item of orderitem ">
                                            
                                             <td>{{ item.OrderId }}</td>
                                             <td>{{ item.ItemId }}</td>

@@ -22,9 +22,9 @@ import { HttpClientModule } from '@angular/common/http'
     BsDropdownModule,
     RouterModule,
     ReactiveFormsModule,
-        FormsModule,
-        PaginationModule.forRoot(),HttpClientModule
-        
+    FormsModule,
+    PaginationModule.forRoot(), HttpClientModule,
+
   ],
   exports: [
     AuthNavbarComponent,
@@ -32,13 +32,14 @@ import { HttpClientModule } from '@angular/common/http'
     AuthContentComponent,
     BsDropdownModule,
     ReactiveFormsModule,
-        FormsModule,
-        PaginationModule
+    FormsModule,
+    PaginationModule,
+
   ],
   providers: [
     AlertService,
     AccountService
-    
-]
+
+  ]
 })
 export class SharedsModule { }

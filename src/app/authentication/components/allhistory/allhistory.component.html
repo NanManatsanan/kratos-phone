@@ -16,6 +16,7 @@
             </li>
         </ul>
     </div> -->
+   
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
@@ -27,9 +28,10 @@
                     <!-- ค้นหา -->
                     <div class="form-group">
                         <div class="input-group">
-                           
 
-                            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="ค้นหาข้อมูล">
+
+                            <input type="text" class="form-control" [(ngModel)]="searchText" id="searchToAPI"
+                                (change)="CustomSearchAPI()"  placeholder="กด Enter เพื่อค้นหา">
 
                             <!-- <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -41,7 +43,7 @@
                 </div>
                 <div class="tile-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="table_id">
                             <thead>
                                 <tr>
                                     <th>Photo</th>
@@ -54,16 +56,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of allhistory | filter:searchText">
-                                    <td><img [src]="item.Photo"    width="50px" height="50px"></td>
+                                <tr *ngFor="let item of allhistory ">
+                                    <td><img [src]="item.Photo" width="50px" height="50px"></td>
                                     <td>{{ item.Name }}</td>
                                     <td>{{ item.From }}</td>
                                     <td>{{ item.Date }}</td>
                                     <td>{{ item.Time }}</td>
                                     <td>{{item.Duration}}</td>
                                     <td class="text-right">
-                                            <i (click)="onInfor(item)" class="fa fa-info-circle"></i>
-                                        
+                                        <i (click)="onInfor(item)" class="fa fa-info-circle"></i>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -76,12 +78,11 @@
                             </tfoot> -->
                         </table>
 
-                        <pagination  (pageChanged)="onPageChanged($event)" previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination>
+                        <pagination (pageChanged)="onPageChanged($event)" previousText="หน้าก่อนหน้า"
+                            nextText="หน้าถัดไป" [totalItems]="100"></pagination>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </app-auth-content>
-
-

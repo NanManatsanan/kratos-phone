@@ -23,5 +23,7 @@ var App = {
 
 		//Activate bootstrip tooltips
 		$("[data-toggle='tooltip']").tooltip();
+
+		
 	}
 };

@@ -1,12 +1,23 @@
 <!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-<aside class="app-sidebar" >
-    <div  *ngIf="Logintest" class="app-sidebar__user">
-            <img *ngIf="Logintest.photo" class="app-sidebar__user-avatar" [src]="Logintest.photo" alt="User Image">
-            <img *ngIf="Logintest.photo" class="app-sidebar__user-avatar" src="assets/images/no-image-profile.png" alt="User Image">
+<aside class="app-sidebar">
+
+
+
+
+
+    <div class="app-sidebar__user">
+
+
+        <!-- <img *ngIf="Logintest.photo" class="app-sidebar__user-avatar" [src]="Logintest.photo" alt="User Image"> -->
+        <img class="app-sidebar__user-avatar" src="assets/images/no-image-profile.png" alt="User Image">
         <div>
+            <div id="ShowFromLocalStorage_email">
+            </div>
+
             <p class="app-sidebar__user-name">
-                {{ Logintest.email }}
+
+
             </p>
             <!-- <p class="app-sidebar__user-designation">
                     {{ Logintest.position }}
@@ -15,17 +26,18 @@
     </div>
     <ul class="app-menu">
         <li>
-            <a class="app-menu__item "[routerLink]="['/' , AppURL.Authen , AuthURL.History]" routerLinkActive="active">
+            <a class="app-menu__item " [routerLink]="['/' , AppURL.Authen , AuthURL.History]" routerLinkActive="active">
                 <i class="app-menu__icon fa fa-phone"></i>
                 <span class="app-menu__label">History</span>
             </a>
         </li>
         <li>
-                <a class="app-menu__item "[routerLink]="['/' , AppURL.Authen , AuthURL.Allhistory]" routerLinkActive="active">
-                    <i class="app-menu__icon fa fa-history"></i>
-                    <span class="app-menu__label">All History</span>
-                </a>
-            </li>
+            <a class="app-menu__item " [routerLink]="['/' , AppURL.Authen , AuthURL.Allhistory]"
+                routerLinkActive="active">
+                <i class="app-menu__icon fa fa-history"></i>
+                <span class="app-menu__label">All History</span>
+            </a>
+        </li>
         <!-- <li class="treeview">
             <a class="app-menu__item" href="#" data-toggle="treeview">
                 <i class="app-menu__icon fa fa-laptop"></i>
