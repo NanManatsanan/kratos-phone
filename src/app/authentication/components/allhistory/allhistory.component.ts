@@ -73,10 +73,7 @@ export class AllhistoryComponent implements OnInit {
     console.log(page.itemsPerPage);
     localStorage.setItem('page', page.page);
       localStorage.setItem('per', page.itemsPerPage);
-  //  this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
-  //     this.allhistory = result.data_page;
-  //     console.log(JSON.stringify(this.allhistory));
-  //   });
+  
       if(this.searchText==null){
         this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
       this.allhistory = result.data_page;
