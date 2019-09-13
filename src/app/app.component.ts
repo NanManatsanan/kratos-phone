@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare const App: any;
+declare var $: any;
 
 @Component({
   selector: 'app-root',
