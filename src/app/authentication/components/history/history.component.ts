@@ -46,10 +46,11 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.clearPhoneAfterSelect();
+    
   }
 
   clearPhoneAfterSelect() {
     localStorage.removeItem('PhoneClick');
   }
-
+  
 }
