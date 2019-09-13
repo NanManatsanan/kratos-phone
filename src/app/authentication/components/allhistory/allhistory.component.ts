@@ -20,12 +20,15 @@ export class AllhistoryComponent implements OnInit {
 
   searchText;
   allhistory: any[] = [];
+  maxitem: any;
   
   page: PageChangedEvent
   constructor(private http: HttpClient, private chatService: ChatService, private router: Router) {
 
     http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/1/10').subscribe(result => {
       this.allhistory = result.data_page;
+      this.maxitem = result.max_item;
+      console.log(JSON.stringify(this.maxitem));
       console.log(JSON.stringify(this.allhistory));
     });
 
@@ -65,25 +68,39 @@ export class AllhistoryComponent implements OnInit {
   // startPage:number =1;
 
   onPageChanged(page: any) {
-    console.error(this.searchText);
+    console.log(this.searchText);
     console.log(page.page);
     console.log(page.itemsPerPage);
     localStorage.setItem('page', page.page);
       localStorage.setItem('per', page.itemsPerPage);
-   this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
+  //  this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
+  //     this.allhistory = result.data_page;
+  //     console.log(JSON.stringify(this.allhistory));
+  //   });
+      if(this.searchText==null){
+        this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
       this.allhistory = result.data_page;
       console.log(JSON.stringify(this.allhistory));
-      
+        });
+      }else
+      {
+        this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per') + '?search=' + this.searchText).subscribe(result => {
+      this.allhistory = result.data_page;
+      this.maxitem = result.max_item;
+      console.log(JSON.stringify(this.allhistory));
     });
+      }
+      
+    
  
   }
 
   CustomSearchAPI() {
-    console.warn(this.searchText);
+    console.log(this.searchText);
     
     this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per') + '?search=' + this.searchText).subscribe(result => {
       this.allhistory = result.data_page;
-     
+      this.maxitem = result.max_item;
       console.log(JSON.stringify(this.allhistory));
     });
   }
