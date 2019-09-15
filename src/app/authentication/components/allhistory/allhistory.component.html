@@ -57,7 +57,8 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of allhistory ">
-                                    <td><img [src]="item.Photo" width="50px" height="50px"></td>
+                                    <td *ngIf="!item.Photo"><img src="assets/images/no-image-profile.png" width="50px" height="50px"></td>
+                                    <td *ngIf="item.Photo"><img [src]="item.Photo" width="50px" height="50px"></td>
                                     <td>{{ item.Name }}</td>
                                     <td>{{ item.From }}</td>
                                     <td>{{ item.Date }}</td>

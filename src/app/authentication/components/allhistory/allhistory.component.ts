@@ -21,27 +21,35 @@ export class AllhistoryComponent implements OnInit {
   searchText;
   allhistory: any[] = [];
   maxitem: any;
-  
+  startPage:any =1;
+  perpage:any =10;
+
   page: PageChangedEvent
   constructor(private http: HttpClient, private chatService: ChatService, private router: Router) {
-
-    http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/1/10').subscribe(result => {
+    http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/'+this.startPage+'/'+this.perpage).subscribe(result => {
       this.allhistory = result.data_page;
       this.maxitem = result.max_item;
+      
       console.log(JSON.stringify(this.maxitem));
       console.log(JSON.stringify(this.allhistory));
+      localStorage.setItem('page', this.startPage);
+      localStorage.setItem('per', this.perpage);
     });
+
 
     // http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/'+localStorage.getItem('extension')+'/'+page.page+'/'+page.itemsPerPage+'?search='+searchText).subscribe(result => {
     //   this.allhistory = result.data_page;
     //   console.log(JSON.stringify(this.allhistory));
     // });
 
+
     chatService.messages.subscribe(msg => {
       console.log("Response From Websocket Server:" + msg);
       console.log(msg);
       //alert(msg);
+      // document.location.reload(true);
     })
+
   }
 
   onInfor(item: any) {
@@ -56,10 +64,10 @@ export class AllhistoryComponent implements OnInit {
 
   ngOnInit() {
     this.clearPhoneAfterSelect();
-   
+
   }
 
-  
+
 
   clearPhoneAfterSelect() {
     localStorage.removeItem('PhoneClick');
@@ -71,30 +79,30 @@ export class AllhistoryComponent implements OnInit {
     console.log(this.searchText);
     console.log(page.page);
     console.log(page.itemsPerPage);
+    // localStorage.removeItem('page1');
     localStorage.setItem('page', page.page);
-      localStorage.setItem('per', page.itemsPerPage);
-  
-      if(this.searchText==null){
-        this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
-      this.allhistory = result.data_page;
-      console.log(JSON.stringify(this.allhistory));
-        });
-      }else
-      {
-        this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per') + '?search=' + this.searchText).subscribe(result => {
-      this.allhistory = result.data_page;
-      this.maxitem = result.max_item;
-      console.log(JSON.stringify(this.allhistory));
-    });
-      }
-      
-    
- 
+    localStorage.setItem('per', page.itemsPerPage);
+
+    if (this.searchText == null) {
+      this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per')).subscribe(result => {
+        this.allhistory = result.data_page;
+        console.log(JSON.stringify(this.allhistory));
+      });
+    } else {
+      this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per') + '?search=' + this.searchText).subscribe(result => {
+        this.allhistory = result.data_page;
+        this.maxitem = result.max_item;
+        console.log(JSON.stringify(this.allhistory));
+      });
+    }
+
+
+
   }
 
   CustomSearchAPI() {
     console.log(this.searchText);
-    
+
     this.http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_history/' + localStorage.getItem('extension') + '/' + localStorage.getItem('page') + '/' + localStorage.getItem('per') + '?search=' + this.searchText).subscribe(result => {
       this.allhistory = result.data_page;
       this.maxitem = result.max_item;

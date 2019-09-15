@@ -16,6 +16,18 @@
             </li>
         </ul>
     </div> -->
+
+    <!-- <br>
+    <br> -->
+    <!-- <div id="show" align="center"></div>
+
+    <div align="center">
+        <p>
+            by <a href="https://crunchify.com">Crunchify.com</a>
+        </p>
+    </div> -->
+
+
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
@@ -27,17 +39,19 @@
                     <!-- ค้นหา -->
                     <div class="form-group">
                         <div class="input-group">
-                           
+
 
                             <!-- <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="ค้นหาข้อมูล"> -->
 
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="tile-body">
+
                     <div class="table-responsive">
-                        <table class="table">
+                        <div id="TableMe"></div>
+                        <table class="table"  id="TableMe">
                             <thead>
                                 <tr>
                                     <th>Photo</th>
@@ -50,8 +64,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of history | filter:searchText">
-                                    <td><img [src]="item.Photo"   width="50px" height="50px"></td>
+                                <tr *ngFor="let item of history" >
+                                    <td *ngIf="!item.Photo"><img src="assets/images/no-image-profile.png" width="50px" height="50px"></td>
+                                    <td *ngIf="item.Photo"><img [src]="item.Photo" width="50px" height="50px"></td>
                                     <td>{{ item.Name }}</td>
                                     <td>{{ item.From }}</td>
                                     <td>{{ item.Date }}</td>
@@ -59,25 +74,15 @@
                                     <td>{{item.Duration}}</td>
                                     <td class="text-left">
                                         <i (click)="onInfor(item)" class="fa fa-info-circle"></i>
-                                        
+
                                     </td>
                                 </tr>
                             </tbody>
-                            <!-- <tfoot>
-                                <tr>
-                                    <th colspan="7">
-                                        จำนวนสมาชิกทั้งหมด 0 คน
-                                    </th>
-                                </tr>
-                            </tfoot> -->
                         </table>
 
-                        <!-- <pagination previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" [totalItems]="30"></pagination> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </app-auth-content>
-
-
