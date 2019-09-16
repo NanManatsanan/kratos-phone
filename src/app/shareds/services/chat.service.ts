@@ -7,6 +7,7 @@ import { AlertService } from './alert.service';
 import { Router } from '@angular/router';
 import { AppURL } from 'src/app/app.url';
 import { AuthURL } from 'src/app/authentication/authentication.url';
+import { stringify } from '@angular/compiler/src/util';
 
 export interface Message {
   data: string;
@@ -38,7 +39,8 @@ export class ChatService {
           console.log(data);
         
 ///empList.
-          this.alert.notify('คุณ ' + data.first_name + ' Ringing ' + ' res from : ' + data.res_from);
+          // this.alert.notify('Name : ' + data.first_name  + ' Phone : ' + stringify(data.res_from).split("@",1));
+          this.alert.notify('Name : ' + data.first_name  + ' Phone : ' + stringify(data.res_from).split("@",1));
           return { data: data }
         }
       })

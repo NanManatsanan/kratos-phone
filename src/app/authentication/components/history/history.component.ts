@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 // import { HttpService } from 'src/app/services/http.service';
@@ -8,7 +8,7 @@ import { ChatService } from 'src/app/shareds/services/chat.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { AppURL } from 'src/app/app.url';
 import { AuthURL } from '../../authentication.url';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 
 declare var $: any;
@@ -19,7 +19,7 @@ declare var $: any;
   providers: [WebsocketService, ChatService]
 })
 
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, OnDestroy  {
   [x: string]: any;
   history: any[] = [];
   searchText;
@@ -28,11 +28,8 @@ export class HistoryComponent implements OnInit {
 
 
   // history: Array<any> = [];
-
+  private subscription: Subscription;
   constructor(private http: HttpClient, private chatService: ChatService, private router: Router) {
-
-
-
 
     http.get<any>('http://nodereddev.kratos.co.th:1880/sniffer/get_top10/' + localStorage.getItem('extension'))
       .subscribe(
@@ -46,7 +43,7 @@ export class HistoryComponent implements OnInit {
           // This tab will event'
           console.log(result.data_page);
         });
-    chatService.messages.subscribe(data => {
+        this.subscription =  chatService.messages.subscribe(data => {
       
       console.log("Response From Websocket Server:" + data);
       //console.log(data.data);
@@ -93,9 +90,7 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.mySubscription) {
-      this.mySubscription.unsubscribe();
-    }
+    if (this.subscription) this.subscription.unsubscribe();
   }
   reloadWindow() {
     console.log('RELOAD----')
